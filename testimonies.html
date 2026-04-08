@@ -46,19 +46,6 @@
   }
 </style>
 </head>
-<script>
-  const scriptURL = "https://script.google.com/macros/s/AKfycbzhgY33cuzLBvzCEWQU9vEd1r8vU0VHa_7w5rlZFpbS17fHKRQ8w9SG2po--RKrp3Y7/exec";
-
-  async function loadTestimonies() {
-    const container = document.getElementById("testimonies-list");
-
-    try {
-      const response = await fetch(scriptURL);
-      const data = await response.json();
-
-      if (!data.length) {
-        container.innerHTML = "<p>No testimonies yet.</p>";
-        return;
       }
 
       container.innerHTML = data.map(item => `
