@@ -2,9 +2,7 @@
 <html>
 <head>
   <title>Testimonies | Light Through Testimonies</title>
-  <div id="testimonies-list"></div>
-  <p>Loading testimonies...</p>
-</div>
+
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
@@ -48,13 +46,13 @@
 </head>
       }
 
-      container.innerHTML = data.map(item => `
-        <div class="testimony-card">
-          <h3>${item.title}</h3>
-          <p><strong>${item.name}</strong></p>
-          <p>${item.story.replace(/\n/g, "<br>")}</p>
-        </div>
-      `).join("");
+  container.innerHTML = data.map(item => `
+  <div class="testimony-card">
+    <h3>${item.title}</h3>
+    <p><strong>${item.name}</strong></p>
+    <p>${item.story.replace(/\n/g, "<br>")}</p>
+  </div>
+`).join("");
 
     } catch (error) {
       container.innerHTML = "<p>Error loading testimonies.</p>";
@@ -65,7 +63,9 @@
   loadTestimonies();
 </script>
 <body>
-
+<div id="testimonies-list">
+  <p>Loading testimonies...</p>
+</div>
 <header>
   <h1>Testimonies</h1>
 </header>
