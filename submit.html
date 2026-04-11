@@ -178,5 +178,44 @@
   <p>© 2026 Light Through Testimonies</p>
 </footer>
 
+<form id="testimonyForm">
+  <input type="text" name="name" placeholder="Your name (optional)" />
+
+  <input type="text" name="title" placeholder="Title of your testimony" required />
+
+  <textarea name="story" placeholder="Share your story..." required></textarea>
+
+  <button type="submit">Submit</button>
+</form>
+
+<p id="message"></p>
+
+  <script>
+  const scriptURL = "https://script.google.com/macros/s/AKfycbzhgY33cuzLBvzCEWQU9vEd1r8vU0VHa_7w5rlZFpb517fHKRQ8w9SG2po--RKrp3Y7/exec";
+
+  const form = document.getElementById("testimonyForm");
+  const message = document.getElementById("message");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    message.textContent = "Submitting...";
+
+    const formData = new FormData(form);
+
+    try {
+      await fetch(scriptURL, {
+        method: "POST",
+        body: formData
+      });
+
+      message.textContent = "Thank you! Your testimony was submitted.";
+      form.reset();
+    } catch (error) {
+      message.textContent = "Error submitting. Try again.";
+      console.error(error);
+    }
+  });
+</script>
 </body>
 </html>
