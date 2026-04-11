@@ -107,29 +107,6 @@
 
     loadTestimonies();
   </script>
-<script>
-fetch("https://script.google.com/macros/s/AKfycbzhgY33cuzLBvzCEWQU9vEd1r8vU0VHa_7w5rlZFpb517fHKRQ8w9SG2po--RKrp3Y7/exec")
-  .then(response => response.json())
-  .then(data => {
-    const container = document.getElementById("testimonies");
-
-    data.forEach(item => {
-      const div = document.createElement("div");
-
-      div.style.background = "#fff";
-      div.style.padding = "20px";
-      div.style.margin = "20px 0";
-      div.style.borderRadius = "10px";
-
-      div.innerHTML = `
-        <h3>${item.title}</h3>
-        <p><strong>${item.name}</strong></p>
-        <p>${item.story}</p>
-      `;
-
-      container.appendChild(div);
-    });
-  });
-</script>
+  
 </body>
 </html>
