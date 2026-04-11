@@ -4,49 +4,151 @@
   <title>Submit | Light Through Testimonies</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      text-align: center;
-    }
+   <style>
+  * {
+    box-sizing: border-box;
+  }
 
-    header {
-      background-color: #6a5acd;
-      color: white;
-      padding: 15px;
-    }
+  body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: linear-gradient(to bottom, #fff7f0, #ffffff);
+    color: #2b2b2b;
+  }
 
-    nav {
-      background-color: #333;
-      padding: 10px;
-    }
+  header {
+    background: linear-gradient(135deg, #f7a76c, #ffd3a8);
+    color: #2b2b2b;
+    text-align: center;
+    padding: 50px 20px 35px;
+  }
 
-    nav a {
-      color: white;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: bold;
-    }
+  header h1 {
+    margin: 0;
+    font-size: 2.4rem;
+    font-weight: 600;
+  }
 
-    .container {
-      padding: 30px 20px;
-    }
+  header p {
+    margin-top: 10px;
+    font-size: 1.05rem;
+    color: #5a5a5a;
+  }
 
-    iframe {
-      width: 100%;
-      max-width: 700px;
-      height: 600px;
-      border: none;
-    }
+  nav {
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px;
+    border-bottom: 1px solid #eee;
+  }
 
-    footer {
-      background-color: #333;
-      color: white;
-      padding: 15px;
-    }
-  </style>
+  nav a {
+    color: #444;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 20px;
+    transition: 0.2s ease;
+  }
+
+  nav a:hover {
+    background: #fff0e4;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  .intro-box {
+    background: #ffffff;
+    border-radius: 16px;
+    padding: 26px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+    text-align: center;
+  }
+
+  .intro-box h2 {
+    margin: 0 0 10px;
+    color: #e67e22;
+    font-weight: 600;
+  }
+
+  .intro-box p {
+    color: #666;
+    line-height: 1.7;
+  }
+
+  #testimonies-list {
+    display: grid;
+    gap: 18px;
+  }
+
+  .testimony-card {
+    background: #ffffff;
+    border-radius: 18px;
+    padding: 22px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    transition: transform 0.15s ease;
+  }
+
+  .testimony-card:hover {
+    transform: translateY(-3px);
+  }
+
+  .testimony-card h3 {
+    margin: 0 0 6px;
+    font-size: 1.4rem;
+    color: #333;
+  }
+
+  .testimony-name {
+    margin: 0 0 12px;
+    color: #e67e22;
+    font-weight: 600;
+  }
+
+  .testimony-story {
+    line-height: 1.7;
+    color: #444;
+  }
+
+  .loader {
+    border: 5px solid #eee;
+    border-top: 5px solid #f7a76c;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    margin: 40px auto;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .empty-message,
+  .error-message {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 14px;
+    text-align: center;
+    color: #666;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+  }
+
+  footer {
+    text-align: center;
+    padding: 22px;
+    margin-top: 40px;
+    color: #777;
+  }
+</style>
 </head>
 
 <body>
