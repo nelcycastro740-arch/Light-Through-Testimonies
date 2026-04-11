@@ -1,77 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Testimonies | Light Through Testimonies</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
-    .loader {
-  border: 6px solid #f3f3f3;
-  border-top: 6px solid #6a5acd; /* purple theme */
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  margin: 40px auto;
-  animation: spin 1s linear infinite;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
+      background: linear-gradient(to bottom, #f4f6fb, #ffffff);
+      color: #222;
     }
 
     header {
-      background-color: #6a5acd;
+      background: linear-gradient(135deg, #5b4bdb, #7a6cff);
       color: white;
-      padding: 20px;
       text-align: center;
+      padding: 50px 20px 35px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    header p {
+      margin-top: 12px;
+      font-size: 1.05rem;
+      opacity: 0.95;
     }
 
     nav {
-      background-color: #333;
-      padding: 12px;
-      text-align: center;
+      background: #1f2430;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px 10px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     }
 
     nav a {
       color: white;
-      margin: 0 15px;
       text-decoration: none;
       font-weight: bold;
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: 0.25s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255, 255, 255, 0.14);
     }
 
     .container {
-      padding: 30px 20px;
+      max-width: 950px;
+      margin: 40px auto;
+      padding: 0 20px 40px;
+    }
+
+    .intro-box {
+      background: white;
+      border-radius: 18px;
+      padding: 28px 24px;
+      margin-bottom: 28px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+
+    .intro-box h2 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      color: #5b4bdb;
+    }
+
+    .intro-box p {
+      margin-bottom: 0;
+      color: #555;
+      line-height: 1.7;
+    }
+
+    #testimonies-list {
+      display: grid;
+      gap: 22px;
     }
 
     .testimony-card {
-      background: #fff;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 700px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      text-align: left;
+      background: white;
+      border-radius: 20px;
+      padding: 26px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      border-left: 6px solid #7a6cff;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .testimony-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .testimony-card h3 {
+      margin: 0 0 10px;
+      color: #2d2d2d;
+      font-size: 1.5rem;
+    }
+
+    .testimony-name {
+      margin: 0 0 16px;
+      color: #7a6cff;
+      font-weight: bold;
+      font-size: 1rem;
+    }
+
+    .testimony-story {
+      line-height: 1.8;
+      color: #444;
+      font-size: 1.02rem;
+    }
+
+    .loader {
+      border: 6px solid #ececec;
+      border-top: 6px solid #7a6cff;
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      margin: 40px auto;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    .empty-message,
+    .error-message {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      text-align: center;
+      color: #555;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
     }
 
     footer {
-      background-color: #333;
-      color: white;
       text-align: center;
-      padding: 15px;
+      padding: 24px;
+      background: #1f2430;
+      color: white;
       margin-top: 40px;
+    }
+
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .testimony-card {
+        padding: 20px;
+      }
+
+      nav {
+        gap: 6px;
+      }
+
+      nav a {
+        padding: 8px 14px;
+        font-size: 0.95rem;
+      }
+
+      .intro-box h2 {
+        font-size: 1.5rem;
+      }
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Testimonies</h1>
+    <p>Faith-filled stories of hope, healing, and God’s guidance</p>
   </header>
 
   <nav>
@@ -82,6 +200,14 @@
   </nav>
 
   <div class="container">
+    <div class="intro-box">
+      <h2>Stories of Faith and Hope</h2>
+      <p>
+        Read real testimonies from people who have experienced God’s love,
+        strength, healing, and guidance in their lives.
+      </p>
+    </div>
+
     <div id="testimonies-list">
       <div class="loader"></div>
     </div>
@@ -92,7 +218,7 @@
   </footer>
 
   <script>
-    const scriptURL = "https://script.google.com/macros/s/AKfycbzhgY33cuzLBvzCEWQU9vEd1r8vU0VHa_7w5rlZFpbS17fHKRQ8w9SG2po--RKrp3Y7/exec";
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzhgY33cuzLBvzCEWQU9vEd1r8vU0VHa_7w5rlZFpb517fHKRQ8w9SG2po--RKrp3Y7/exec";
 
     async function loadTestimonies() {
       const container = document.getElementById("testimonies-list");
@@ -102,25 +228,24 @@
         const data = await response.json();
 
         if (!data.length) {
-          container.innerHTML = "<p>No testimonies yet.</p>";
+          container.innerHTML = '<div class="empty-message">No testimonies yet.</div>';
           return;
         }
 
         container.innerHTML = data.map(item => `
           <div class="testimony-card">
-            <h3>${item.title}</h3>
-            <p><strong>${item.name}</strong></p>
-            <p>${item.story.replace(/\n/g, "<br>")}</p>
+            <h3>${item.title || "Untitled Testimony"}</h3>
+            <p class="testimony-name">${item.name || "Anonymous"}</p>
+            <p class="testimony-story">${(item.story || "").replace(/\n/g, "<br>")}</p>
           </div>
         `).join("");
       } catch (error) {
-        container.innerHTML = "<p>Error loading testimonies.</p>";
+        container.innerHTML = '<div class="error-message">Error loading testimonies.</div>';
         console.error(error);
       }
     }
 
     loadTestimonies();
   </script>
-  
 </body>
 </html>
