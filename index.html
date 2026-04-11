@@ -102,6 +102,27 @@
 <footer>
   <p>© 2026 Light Through Testimonies</p>
 </footer>
+<div id="testimonies"></div>
 
+<script>
+fetch("PASTE-YOUR-WEB-APP-URL-HERE")
+  .then(response => response.json())
+  .then(data => {
+    const container = document.getElementById("testimonies");
+
+    data.forEach(item => {
+      const div = document.createElement("div");
+
+      div.innerHTML = `
+        <h3>${item.title}</h3>
+        <p><strong>${item.name}</strong></p>
+        <p>${item.story}</p>
+        <hr>
+      `;
+
+      container.appendChild(div);
+    });
+  });
+</script>
 </body>
 </html>
