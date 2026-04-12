@@ -316,34 +316,6 @@ async function likeTestimony(id) {
   }
 }
 
-async function submitComment(event, testimonyId) {
-  event.preventDefault();
-
-  const form = event.target;
-  const statusEl = document.getElementById(`comment-status-${testimonyId}`);
-  const name = form.name.value.trim();
-  const comment = form.comment.value.trim();
-
-  if (!comment) {
-    statusEl.textContent = "Please write a comment first.";
-    return;
-  }
-
-  statusEl.textContent = "Submitting comment...";
-
-  try {
-    const response = await fetch(scriptURL, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        action: "addComment",
-        testimonyId,
-        name,
-        comment
-      })
-    });
 
     const result = await response.json();
 
