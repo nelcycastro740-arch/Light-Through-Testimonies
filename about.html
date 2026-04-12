@@ -55,23 +55,35 @@
     .about-card {
       background: white;
       border-radius: 16px;
-      padding: 24px;
+      padding: 28px 26px;
       box-shadow: 0 4px 14px rgba(0,0,0,0.06);
       margin-bottom: 22px;
+      transition: transform 0.2s ease, box-shadow 0.2 ease;
+    }
+    
+    .about-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0,08);
     }
 
     .about-card h2 {
       margin: 0 0 12px;
       color: #5a4034;
-      font-size: 1.3rem;
+      font-size: 1.45rem;
+      front-weight: bold;
     }
 
     .about-card p {
       margin: 0;
-      line-height: 1.7;
+      line-height: 1.75;
       color: #5f4a40;
     }
 
+    .about-card:last-of-type {
+      background: #fff3eb;
+      border-left: 4px solid #e0a98d;
+    }
+    
     .mission {
       text-align: center;
       font-style: italic;
