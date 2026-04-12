@@ -200,17 +200,8 @@ footer {
 
         const featured = testimonies[0];
 
-        featuredTestimony.innerHTML = `
-          <div class="featured-card">
-            <div class="featured-label">Featured</div>
-            <h3>${escapeHTML(featured.title)}</h3>
-            <div class="meta">Shared by ${escapeHTML(featured.name || "Anonymous")}</div>
-            <div class="story">${escapeHTML(featured.story)}</div>
-            <div class="actions">
-              <button class="like-btn" onclick="likeTestimony('featured_0')">♥ Like</button>
-              <span class="like-count">Likes: <span id="likes-featured_0">${getLikes("featured_0")}</span></span>
-            </div>
-          </div>
+        featuredTestimony.innerHTML = regularTestimonies.map(...)
+         
         `;
 
         testimoniesList.innerHTML = testimonies.map((item, index) => `
