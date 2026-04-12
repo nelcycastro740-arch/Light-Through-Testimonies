@@ -1,1 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonies | Light Through Testimonies</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff8f3;
+      color: #4a3a33;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 16px 20px;
+      background: #f7e3d7;
+      border-bottom: 1px solid #ead3c5;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      color: #7a5b4c;
+    }
+
+    nav {
+      text-align: center;
+      padding: 14px;
+      background: #fff3eb;
+      border-bottom: 1px solid #f0ddd1;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #8a5a44;
+      font-weight: bold;
+      margin: 0 12px;
+    }
+
+    .container {
+      width: min(92%, 900px);
+      margin: 30px auto;
+    }
+
+    .message {
+      text-align: center;
+      color: #7a5b4c;
+      padding: 20px;
+    }
+
+    .testimony-card {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      margin-bottom: 22px;
+    }
+
+    .testimony-card h3 {
+      margin: 0 0 8px;
+      color: #5a4034;
+    }
+
+    .meta {
+      color: #9a7a69;
+      font-size: 0.92rem;
+      margin-bottom: 12px;
+    }
+
+    .story {
+      line-height: 1.7;
+      white-space: pre-wrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 16px 40px;
+      color: #7b6a61;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Community Testimonies</h1>
+    <p>Stories of faith, healing, hope, and growth.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="testimonies.html">Testimonies</a>
+    <a href="submit.html">Submit</a>
+  </nav>
+
+  <main class="container">
+    <div id="testimoniesList" class="message">Loading testimonies...</div>
+  </main>
+
+  <footer>
+    © 2026 Light Through Testimonies
+  </footer>
+
+  <script>
+    const scriptURL = "PASTE-YOUR-WEB-APP-URL-HERE";
+    const testimoniesList = document.getElementById("testimoniesList");
+
+    async function loadTestimonies() {
+      try {
+        const response = await fetch(scriptURL);
+        const testimonies = await response.json();
+
+        if (!testimonies.length) {
+          testimoniesList.innerHTML = "<div class='message'>No approved testimonies yet.</div>";
+          return;
+        }
+
+        testimoniesList.innerHTML = testimonies.map(item => `
+          <div class="testimony-card">
+            <h3>${escapeHTML(item.title)}</h3>
+            <div class="meta">Shared by ${escapeHTML(item.name || "Anonymous")}</div>
+            <div class="story">${escapeHTML(item.story)}</div>
+          </div>
+        `).join("");
+      } catch (error) {
+        testimoniesList.innerHTML = "<div class='message'>Unable to load testimonies right now.</div>";
+        console.error(error);
+      }
+    }
+
+    function escapeHTML(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    loadTestimonies();
+  </script>
+</body>
+</html>
