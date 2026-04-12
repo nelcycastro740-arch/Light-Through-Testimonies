@@ -118,10 +118,12 @@ nav a {
   border: none;
   background: #8a5a44;
   color: white;
-  padding: 10px 14px;
+  padding: 14px;
   border-radius: 10px;
   cursor: pointer;
   font-weight: bold;
+  width: 100%;
+  front-size: 1rem;
 }
 
 .like-btn:hover,
@@ -135,7 +137,7 @@ nav a {
 }
 
 .comments-section {
-  margin-top: 18px;
+  margin-top: 20px;
   padding-top: 14px;
   border-top: 1px solid #f0e2d9;
 }
@@ -347,7 +349,7 @@ async function submitComment(event, testimonyId) {
 
     if (result.success) {
       form.reset();
-      statusEl.textContent = "Your comment was submitted for approval.";
+      statusEl.textContent = "Thank You! Your comment will appear once approved.";
     } else {
       statusEl.textContent = result.message || "Could not submit comment.";
     }
