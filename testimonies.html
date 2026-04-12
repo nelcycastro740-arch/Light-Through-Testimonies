@@ -189,7 +189,7 @@ footer {
 
     async function loadTestimonies() {
       try {
-        
+        const response = await fetch(`${scriptURL}?action=getTestimonies`);
         const testimonies = await response.json();
 
         if (!testimonies.length) {
