@@ -201,8 +201,11 @@ footer {
         const featured = testimonies[0];
 
         featuredTestimony.innerHTML = regularTestimonies.map(...)
-         
-        `;
+         const featured = testimonies.find(item => item.featured) || testimonies[0];
+
+const regularTestimonies = testimonies.filter(
+  item => String(item.id) !== String(featured.id)
+);
 
         testimoniesList.innerHTML = testimonies.map((item, index) => `
           <div class="testimony-card">
