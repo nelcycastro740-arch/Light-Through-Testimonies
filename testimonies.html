@@ -316,44 +316,6 @@ async function likeTestimony(id) {
   }
 }
 
-:::writing{variant=“standard” id=“99231”}
-async function submitComment(event, testimonyId) {
-event.preventDefault();
-
-const form = event.target;
-const statusEl = document.getElementById(comment-status-${testimonyId});
-
-const name = form.name.value.trim();
-const comment = form.comment.value.trim();
-
-if (!comment) {
-statusEl.textContent = “Please write a comment first.”;
-return;
-}
-
-statusEl.textContent = “Submitting comment…”;
-
-try {
-await fetch(scriptURL, {
-method: “POST”,
-mode: “no-cors”,
-headers: {
-“Content-Type”: “application/json”
-},
-body: JSON.stringify({
-action: “addComment”,
-testimonyId: testimonyId,
-name: name,
-comment: comment
-})
-});
-      form.reset();
-      statusEl.textContent = "Thank You! Your comment will appear once approved.";
-  } catch (error) {
-    console.error(error);
-    statusEl.textContent = "There was a problem submitting your comment.";
-  }
-}
 :::
 function escapeHTML(text) {
   return String(text)
