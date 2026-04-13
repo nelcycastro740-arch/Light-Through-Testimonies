@@ -1,1 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Testimonies | Light Through Testimonies</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #fff8f3;
+  color: #4a3a33;
+}
 
+header {
+  text-align: center;
+  padding: 30px 16px 20px;
+  background: #f7e3d7;
+  border-bottom: 1px solid #ead3c5;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+header p {
+  margin: 10px 0 0;
+  color: #7a5b4c;
+}
+
+nav {
+  text-align: center;
+  padding: 14px;
+  background: #fff3eb;
+  border-bottom: 1px solid #f0ddd1;
+}
+
+nav a {
+  text-decoration: none;
+  color: #8a5a44;
+  font-weight: bold;
+  margin: 0 12px;
+}
+
+.container {
+  width: min(92%, 920px);
+  margin: 30px auto;
+}
+
+.section-title {
+  font-size: 1.4rem;
+  margin: 0 0 16px;
+  color: #5a4034;
+}
+
+.message {
+  text-align: center;
+  color: #7a5b4c;
+  padding: 20px;
+}
+
+.featured-card,
+.testimony-card {
+  background: white;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+  margin-bottom: 22px;
+  border: 1px solid #f2e4da;
+}
+
+.featured-card {
+  background: linear-gradient(180deg, #fff7f0 0%, #ffffff 100%);
+}
+
+.featured-label {
+  display: inline-block;
+  background: #8a5a44;
+  color: white;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 6px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.testimony-card h3,
+.featured-card h3 {
+  margin: 0 0 8px;
+  color: #5a4034;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.meta {
+  color: #9a7a69;
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.story {
+  line-height: 1.75;
+  white-space: pre-wrap;
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.actions {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.like-btn,
+.comment-btn {
+  border: none;
+  background: #8a5a44;
+  color: white;
+  padding: 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+  font-size: 1rem;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.like-btn:hover,
+.comment-btn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.like-btn.liked {
+  background: #6f4736;
+  cursor: not-allowed;
+  opacity: 0.88;
+}
+
+.like-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+  color: #7a5b4c;
+  font-size: 0.95rem;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.liked-note {
+  font-size: 0.9rem;
+  color: #9a7a69;
+}
+
+.comments-section {
+  margin-top: 22px;
+  padding-top: 18px;
+  border-top: 1px solid #f0e2d9;
+}
+
+.comments-section h4 {
+  margin: 0 0 14px;
+  color: #5a4034;
+  text-align: center;
+  font-size: 1.15rem;
+}
+
+.comments-list {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.comment-item {
+  background: #fff8f3;
+  border: 1px solid #f1ddd1;
+  border-radius: 14px;
+  padding: 12px 14px;
+  text-align: left;
+}
+
+.comment-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+  flex-wrap: wrap;
+}
+
+.comment-name {
+  font-weight: bold;
+  color: #6b4d3f;
+}
+
+.comment-badge {
+  font-size: 0.78rem;
+  color: #9a7a69;
+  background: #fff3eb;
+  border-radius: 999px;
+  padding: 4px 8px;
+}
+
+.comment-text {
+  color: #5f4a40;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.comment-form {
+  margin-top: 16px;
+  display: grid;
+  gap: 10px;
+}
+
+.comment-form input,
+.comment-form textarea {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #e5cfc1;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1rem;
+  background: #fffdfb;
+}
+
+.comment-form textarea {
+  min-height: 95px;
+  resize: vertical;
+}
+
+.comment-status {
+  color: #7a5b4c;
+  font-size: 0.92rem;
+  text-align: center;
+  min-height: 18px;
+}
+
+footer {
+  text-align: center;
+  padding: 24px 16px 40px;
+  color: #7b6a61;
+}
+
+@media (max-width: 700px) {
+  .testimony-card h3,
+  .featured-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .story {
+    text-align: left;
+  }
+
+  .like-row {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+   </style>
+</head>
+<body>
+  <header>
+    <h1>Community Testimonies</h1>
+    <p>Stories of faith, healing, hope, and growth.</p>
+  </header>
+   <nav>
+    <a href="index.html">Home</a>
+    <a href="testimonies.html">Testimonies</a>
+    <a href="submit.html">Submit</a>
+    <a href="about.html">About</a>
+  </nav>
+    <main class="container">
+    <section id="featuredSection">
+      <h2 class="section-title">Featured Testimony</h2>
+      <div id="featuredTestimony" class="message">Loading featured testimony...</div>
+    </section>
+<section style="margin-top: 34px;">
+  <h2 class="section-title">All Testimonies</h2>
+  <div id="testimoniesList" class="message">Loading testimonies...</div>
+</section>
+</main>
+  <footer>
+    © 2026 Light Through Testimonies
+  </footer>
+  <script>
+    const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+    const testimoniesList = document.getElementById("testimoniesList");
+    const featuredTestimony = document.getElementById("featuredTestimony");
+
+    async function loadTestimonies() {
+      try {
+        const response = await fetch(`${scriptURL}?action=getTestimonies`);
+        const testimonies = await response.json();
+
+        if (!Array.isArray(testimonies) || !testimonies.length) {
+          featuredTestimony.innerHTML = "<div class='message'>No featured testimony yet.</div>";
+          testimoniesList.innerHTML = "<div class='message'>No approved testimonies yet.</div>";
+          return;
+        }
+
+        const featured = testimonies.find(item => item.featured) || testimonies[0];
+        const regularTestimonies = testimonies.filter(
+          item => String(item.id) !== String(featured.id)
+        );
+
+        featuredTestimony.innerHTML = renderTestimonyCard(featured, true);
+
+        if (!regularTestimonies.length) {
+          testimoniesList.innerHTML = "<div class='message'>No additional testimonies yet.</div>";
+        } else {
+          testimoniesList.innerHTML = regularTestimonies
+            .map(item => renderTestimonyCard(item, false))
+            .join("");
+        }
+
+        applyLikeButtonStates();
+      } catch (error) {
+        featuredTestimony.innerHTML = "<div class='message'>Unable to load featured testimony right now.</div>";
+        testimoniesList.innerHTML = "<div class='message'>Unable to load testimonies right now.</div>";
+        console.error(error);
+      }
+    }
+
+    function renderTestimonyCard(item, isFeatured) {
+      const sortedComments = Array.isArray(item.comments)
+        ? [...item.comments].reverse()
+        : [];
+
+      const commentsHTML = sortedComments.length
+        ? sortedComments.map(comment => `
+            <div class="comment-item">
+              <div class="comment-top">
+                <div class="comment-name">${escapeHTML(comment.name || "Anonymous")}</div>
+                <div class="comment-badge">Approved</div>
+              </div>
+              <div class="comment-text">${escapeHTML(comment.comment || "")}</div>
+            </div>
+          `).join("")
+        : "<div class='comment-status'>No approved comments yet.</div>";
+
+      return `
+        <div class="${isFeatured ? "featured-card" : "testimony-card"}">
+          ${isFeatured ? '<div class="featured-label">Featured</div>' : ""}
+          <h3>${escapeHTML(item.title)}</h3>
+          <div class="meta">Shared by ${escapeHTML(item.name || "Anonymous")}</div>
+          <div class="story">${escapeHTML(item.story)}</div>
+
+          <div class="actions">
+            <button
+              class="like-btn"
+              id="like-btn-${String(item.id)}"
+              onclick="likeTestimony('${String(item.id)}')"
+            >
+              ♥ Like
+            </button>
+            <div class="like-row">
+              <span class="like-count">Likes: <span id="likes-${String(item.id)}">${Number(item.likes || 0)}</span></span>
+              <span class="liked-note" id="liked-note-${String(item.id)}"></span>
+            </div>
+          </div>
+
+          <div class="comments-section">
+            <h4>Comments</h4>
+            <div class="comments-list">${commentsHTML}</div>
+
+            <form class="comment-form" onsubmit="submitComment(event, '${String(item.id)}')">
+              <input type="text" name="name" placeholder="Your name (optional)" />
+              <textarea name="comment" placeholder="Write a comment..." required></textarea>
+          <button type="submit" class="comment-btn">Submit Comment</button>
+          <div class="comment-status" id="comment-status-${String(item.id)}"></div>
+        </form>
+      </div>
+    </div>
+  `;
+}
+
+function hasLiked(id) {
+  return localStorage.getItem(`liked_${id}`) === "true";
+}
+
+function applyLikeButtonStates() {
+  const buttons = document.querySelectorAll(".like-btn");
+
+  buttons.forEach(button => {
+    const id = button.id.replace("like-btn-", "");
+    const note = document.getElementById(`liked-note-${id}`);
+
+    if (hasLiked(id)) {
+      button.disabled = true;
+      button.classList.add("liked");
+      button.textContent = "♥ Liked";
+      if (note) {
+        note.textContent = "You already liked this testimony on this device.";
+      }
+    } else {
+      button.disabled = false;
+      button.classList.remove("liked");
+      button.textContent = "♥ Like";
+      if (note) {
+        note.textContent = "";
+      }
+    }
+  });
+}
+
+async function likeTestimony(id) {
+  if (hasLiked(id)) {
+    return;
+  }
+
+  try {
+    const response = await fetch(`${scriptURL}?action=likeTestimony&id=${encodeURIComponent(id)}`);
+    const result = await response.json();
+
+    if (result.success) {
+      localStorage.setItem(`liked_${id}`, "true");
+
+      const likeEl = document.getElementById(`likes-${id}`);
+      if (likeEl) {
+        likeEl.textContent = result.likes;
+      }
+
+      applyLikeButtonStates();
+    } else {
+      alert("Could not save like.");
+    }
+  } catch (error) {
+    console.error(error);
+    alert("There was a problem liking this testimony.");
+  }
+}
+
+async function submitComment(event, testimonyId) {
+  event.preventDefault();
+
+  const form = event.target;
+  const statusEl = document.getElementById(`comment-status-${testimonyId}`);
+  const name = form.name.value.trim();
+  const comment = form.comment.value.trim();
+
+  if (!comment) {
+    statusEl.textContent = "Please write a comment first.";
+    return;
+  }
+
+  statusEl.textContent = "Submitting comment...";
+
+  try {
+    await fetch(scriptURL, {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        action: "addComment",
+        testimonyId: testimonyId,
+        name: name,
+        comment: comment
+      })
+    });
+
+    form.reset();
+    statusEl.textContent = "Thank you! Your comment will appear once approved.";
+  } catch (error) {
+    console.error(error);
+    statusEl.textContent = "There was a problem submitting your comment.";
+  }
+}
+
+function escapeHTML(text) {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+loadTestimonies();
+   </script>
+</body>
+</html>   
