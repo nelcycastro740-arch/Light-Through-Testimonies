@@ -345,20 +345,16 @@ action: “addComment”,
 testimonyId: testimonyId,
 name: name,
 comment: comment
-    const result = await response.json();
-
-    if (result.success) {
+})
+});
       form.reset();
       statusEl.textContent = "Thank You! Your comment will appear once approved.";
-    } else {
-      statusEl.textContent = result.message || "Could not submit comment.";
-    }
   } catch (error) {
     console.error(error);
     statusEl.textContent = "There was a problem submitting your comment.";
   }
 }
-
+:::
 function escapeHTML(text) {
   return String(text)
     .replace(/&/g, "&amp;")
