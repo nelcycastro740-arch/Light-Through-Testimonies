@@ -1,1 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Light Through Testimonies</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff8f3;
+      color: #4a3a33;
+    }
+
+    header {
+      text-align: center;
+      padding: 42px 16px 28px;
+      background: #f7e3d7;
+      border-bottom: 1px solid #ead3c5;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.3rem;
+      color: #5a4034;
+    }
+
+    header p {
+      margin: 12px auto 0;
+      color: #7a5b4c;
+      max-width: 700px;
+      line-height: 1.7;
+      font-size: 1.05rem;
+    }
+
+    nav {
+      text-align: center;
+      padding: 14px;
+      background: #fff3eb;
+      border-bottom: 1px solid #f0ddd1;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #8a5a44;
+      font-weight: bold;
+      margin: 0 12px;
+    }
+
+    .container {
+      width: min(92%, 980px);
+      margin: 34px auto 50px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, #fff7f0 0%, #ffffff 100%);
+      border: 1px solid #f2e4da;
+      border-radius: 18px;
+      padding: 34px 24px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+      text-align: center;
+      margin-bottom: 26px;
+    }
+
+    .hero-card h2 {
+      margin: 0 0 14px;
+      color: #5a4034;
+      font-size: 1.8rem;
+    }
+
+    .hero-card p {
+      margin: 0 auto 20px;
+      max-width: 760px;
+      color: #6a5247;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #8a5a44;
+      color: white;
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-weight: bold;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    .btn.secondary {
+      background: #d9b7a3;
+      color: #4a3a33;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      margin-top: 10px;
+    }
+
+    .info-card {
+      background: white;
+      border: 1px solid #f2e4da;
+      border-radius: 18px;
+      padding: 24px 20px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .info-card h3 {
+      margin: 0 0 10px;
+      color: #5a4034;
+      font-size: 1.2rem;
+    }
+
+    .info-card p {
+      margin: 0;
+      color: #6f5a4f;
+      line-height: 1.7;
+      font-size: 0.97rem;
+    }
+
+    .featured-preview-card {
+      background: white;
+      border: 1px solid #f2e4da;
+      border-radius: 18px;
+      padding: 28px 24px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      margin-top: 22px;
+    }
+
+    .featured-preview-card h3 {
+      margin: 0 0 14px;
+      color: #5a4034;
+      text-align: center;
+      font-size: 1.45rem;
+    }
+
+    .featured-loading,
+    .featured-empty,
+    .featured-error {
+      text-align: center;
+      color: #7a5b4c;
+      padding: 14px 0;
+    }
+
+    .featured-badge {
+      display: inline-block;
+      background: #8a5a44;
+      color: white;
+      font-size: 0.82rem;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .featured-preview-inner {
+      text-align: center;
+    }
+
+    .featured-preview-title {
+      margin: 0 0 8px;
+      color: #5a4034;
+      font-size: 1.4rem;
+    }
+
+    .featured-preview-meta {
+      color: #9a7a69;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    .featured-preview-story {
+      color: #6a5247;
+      line-height: 1.8;
+      max-width: 760px;
+      margin: 0 auto 16px;
+      white-space: pre-wrap;
+    }
+
+    .featured-preview-footer {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      color: #7a5b4c;
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .quote-card {
+      background: white;
+      border: 1px solid #f2e4da;
+      border-radius: 18px;
+      padding: 28px 24px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      margin-top: 22px;
+    }
+
+    .quote-card h3 {
+      margin: 0 0 12px;
+      color: #5a4034;
+    }
+
+    .quote {
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: #6a5247;
+      font-style: italic;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    .cta-card {
+      background: linear-gradient(180deg, #fff7f0 0%, #ffffff 100%);
+      border: 1px solid #f2e4da;
+      border-radius: 18px;
+      padding: 30px 24px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+      text-align: center;
+      margin-top: 22px;
+    }
+
+    .cta-card h3 {
+      margin: 0 0 12px;
+      color: #5a4034;
+      font-size: 1.45rem;
+    }
+
+    .cta-card p {
+      margin: 0 auto 18px;
+      max-width: 720px;
+      color: #6f5a4f;
+      line-height: 1.75;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 16px 40px;
+      color: #7b6a61;
+    }
+
+    @media (max-width: 850px) {
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 1.95rem;
+      }
+
+      .hero-card h2 {
+        font-size: 1.55rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Light Through Testimonies</h1>
+    <p>
+      A place where stories of faith, healing, hope, and growth can be shared to encourage others and remind people they are not alone.
+    </p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="testimonies.html">Testimonies</a>
+    <a href="submit.html">Submit</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <main class="container">
+    <section class="hero-card">
+      <h2>Welcome</h2>
+      <p>
+        Light Through Testimonies is a warm and encouraging space where people can share real stories, personal journeys, and moments of faith. Every testimony carries light, and every story has the power to comfort, inspire, and help someone else keep going.
+      </p>
+
+      <div class="button-group">
+        <a href="testimonies.html" class="btn">Read Testimonies</a>
+        <a href="submit.html" class="btn secondary">Share Your Story</a>
+      </div>
+    </section>
+
+    <section class="section-grid">
+      <div class="info-card">
+        <h3>Faith</h3>
+        <p>
+          Read stories that reflect trust, growth, prayer, and the ways faith can carry people through difficult seasons.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>Hope</h3>
+        <p>
+          Find encouragement through honest testimonies that remind people healing, peace, and strength are still possible.
+        </p>
+      </div>
+
+      <div class="info-card">
+        <h3>Community</h3>
+        <p>
+          This is a space where people can feel seen, supported, and connected through the experiences of others.
+        </p>
+      </div>
+    </section>
+
+    <section class="featured-preview-card">
+      <h3>Featured Testimony Preview</h3>
+      <div id="featuredPreview" class="featured-loading">Loading featured testimony...</div>
+    </section>
+
+    <section class="quote-card">
+      <h3>Our Purpose</h3>
+      <p class="quote">
+        “To share real testimonies that inspire faith, bring comfort, and shine light through every story.”
+      </p>
+    </section>
+
+    <section class="cta-card">
+      <h3>Your Story Matters</h3>
+      <p>
+        Whether your testimony is about healing, struggle, growth, or a breakthrough moment, your story may be exactly what someone else needs to hear. Share what God has done in your life and help bring encouragement to others.
+      </p>
+      <div class="button-group">
+        <a href="submit.html" class="btn">Submit a Testimony</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Light Through Testimonies
+  </footer>
+
+  <script>
+    const scriptURL = "PASTE_YOUR_WEB_APP_URL_HERE";
+    const featuredPreview = document.getElementById("featuredPreview");
+
+    async function loadFeaturedPreview() {
+      try {
+        const response = await fetch(`${scriptURL}?action=getTestimonies`);
+        const testimonies = await response.json();
+
+        if (!Array.isArray(testimonies) || !testimonies.length) {
+          featuredPreview.innerHTML = "<div class='featured-empty'>No featured testimony available yet.</div>";
+          return;
+        }
+
+        const featured = testimonies.find(item => item.featured) || testimonies[0];
+        const previewText = truncateText(featured.story || "", 220);
+
+        featuredPreview.innerHTML = `
+          <div class="featured-preview-inner">
+            <div class="featured-badge">Featured</div>
+            <h4 class="featured-preview-title">${escapeHTML(featured.title || "Untitled Testimony")}</h4>
+            <div class="featured-preview-meta">Shared by ${escapeHTML(featured.name || "Anonymous")}</div>
+            <div class="featured-preview-story">${escapeHTML(previewText)}</div>
+            <div class="featured-preview-footer">
+              <span>Likes: ${Number(featured.likes || 0)}</span>
+              <span>${Array.isArray(featured.comments) ? featured.comments.length : 0} approved comment${Array.isArray(featured.comments) && featured.comments.length === 1 ? "" : "s"}</span>
+            </div>
+            <div class="button-group">
+              <a href="testimonies.html" class="btn">Read Full Testimony</a>
+            </div>
+          </div>
+        `;
+      } catch (error) {
+        console.error(error);
+        featuredPreview.innerHTML = "<div class='featured-error'>Unable to load featured testimony right now.</div>";
+      }
+    }
+
+    function truncateText(text, maxLength) {
+      const cleanText = String(text || "").trim();
+      if (cleanText.length <= maxLength) {
+        return cleanText;
+      }
+      return cleanText.slice(0, maxLength).trim() + "...";
+    }
+
+    function escapeHTML(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    loadFeaturedPreview();
+  </script>
+</body>
+</html>
