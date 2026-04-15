@@ -1,1 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Community Testimonies | Light Through Testimonies</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
+    body {
+      font-family: Arial, sans-serif;
+      background: #fcfaf7;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    header {
+      background: #f3e6dc;
+      text-align: center;
+      padding: 40px 20px 25px;
+      border-bottom: 1px solid #ead9cc;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: #4a403a;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      color: #6f625a;
+      font-size: 1.05rem;
+    }
+
+    nav {
+      background: #fffaf5;
+      border-bottom: 1px solid #eee1d5;
+      padding: 14px 10px;
+      text-align: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #6e5c52;
+      margin: 0 18px;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      color: #c97d54;
+    }
+
+    .container {
+      max-width: 950px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h2.section-title {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #4a403a;
+    }
+
+    .section-block {
+      margin-bottom: 55px;
+    }
+
+    .testimony-card,
+    .featured-card {
+      background: #fff;
+      border: 1px solid #f0e4d8;
+      border-radius: 18px;
+      padding: 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+    }
+
+    .featured-card {
+      border: 2px solid #f2c8a8;
+      background: linear-gradient(to bottom, #fffaf6, #fff);
+    }
+
+    .testimony-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .testimony-name {
+      font-size: 1.05rem;
+      font-weight: bold;
+      color: #5a463a;
+    }
+
+    .testimony-date {
+      font-size: 0.9rem;
+      color: #9a8d84;
+    }
+
+    .testimony-text {
+      font-size: 1rem;
+      color: #3f3a36;
+      margin-bottom: 18px;
+      white-space: pre-line;
+    }
+
+    .featured-badge {
+      display: inline-block;
+      background: #f4a261;
+      color: white;
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 14px;
+    }
+
+    .card-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+      margin-bottom: 14px;
+    }
+
+    .like-btn {
+      border: none;
+      background: #f8eee6;
+      color: #7a5a45;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .like-btn:hover {
+      background: #f3dfd0;
+    }
+
+    .like-btn.liked {
+      background: #f4a261;
+      color: white;
+    }
+
+    .comments-section {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #f1e6dd;
+    }
+
+    .comments-section h4 {
+      font-size: 1rem;
+      color: #5f4d43;
+      margin-bottom: 10px;
+    }
+
+    .comment-list {
+      margin-bottom: 14px;
+    }
+
+    .comment {
+      background: #fff8f2;
+      border: 1px solid #f2e3d6;
+      border-radius: 12px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+    }
+
+    .comment-name {
+      font-weight: bold;
+      color: #6d5446;
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+
+    .comment-text {
+      color: #444;
+      font-size: 0.95rem;
+    }
+
+    .comment-date {
+      display: block;
+      font-size: 0.8rem;
+      color: #9a8d84;
+      margin-top: 6px;
+    }
+
+    .comment-form input,
+    .comment-form textarea {
+      width: 100%;
+      border: 1px solid #e8d8ca;
+      border-radius: 10px;
+      padding: 10px 12px;
+      margin-bottom: 10px;
+      font-size: 0.95rem;
+      background: #fff;
+    }
+
+    .comment-form textarea {
+      min-height: 90px;
+      resize: vertical;
+    }
+
+    .comment-btn {
+      background: #d98b5f;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 600;
+    }
+
+    .comment-btn:hover {
+      background: #c97d54;
+    }
+
+    .comment-status {
+      margin-top: 8px;
+      font-size: 0.9rem;
+      color: #7a6659;
+    }
+
+    .testimony-tools {
+      margin-top: 18px;
+      padding: 16px;
+      background: #fff7f2;
+      border: 1px solid #f1d8c7;
+      border-radius: 14px;
+    }
+
+    .testimony-tools h4 {
+      color: #c97745;
+      margin-bottom: 8px;
+      font-size: 1rem;
+    }
+
+    .tool-description {
+      color: #5b514b;
+      font-size: 0.95rem;
+      margin-bottom: 12px;
+    }
+
+    .tool-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .tool-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: #f4a261;
+      color: #fff;
+      padding: 9px 12px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .tool-btn:hover {
+      background: #e48b49;
+    }
+
+    .tool-btn.secondary {
+      background: #e9c46a;
+      color: #4a403a;
+    }
+
+    .tool-btn.secondary:hover {
+      background: #ddb95d;
+    }
+
+    .loading-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+    }
+
+    .loader {
+      width: 42px;
+      height: 42px;
+      border: 4px solid #f0dfd2;
+      border-top: 4px solid #d98b5f;
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .empty-message,
+    .error-message {
+      text-align: center;
+      color: #7c6c61;
+      padding: 24px 12px;
+      font-size: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 28px 20px 40px;
+      color: #85776e;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 700px) {
+      header h1 {
+        font-size: 1.8rem;
+      }
+
+      nav a {
+        margin: 0 10px;
+        font-size: 0.95rem;
+      }
+
+      .container {
+        padding: 0 14px;
+      }
+
+      .testimony-card,
+      .featured-card {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Community Testimonies</h1>
+    <p>Stories of faith, healing, hope, and growth.</p>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="testimonies.html">Testimonies</a>
+    <a href="submit.html">Submit</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <main class="container">
+    <section class="section-block">
+      <h2 class="section-title">Featured Testimony</h2>
+      <div id="featured-testimony">
+        <div class="loading-wrap">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block">
+      <h2 class="section-title">All Testimonies</h2>
+      <div id="testimonies-list">
+        <div class="loading-wrap">
+          <div class="loader"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Light Through Testimonies
+  </footer>
+
+  <script>
+    const WEB_APP_URL = "YOUR_WEB_APP_URL_HERE";
+
+    async function loadTestimonies() {
+      const featuredContainer = document.getElementById("featured-testimony");
+      const testimoniesContainer = document.getElementById("testimonies-list");
+
+      try {
+        const response = await fetch(WEB_APP_URL);
+        const data = await response.json();
+
+        if (!Array.isArray(data) || data.length === 0) {
+          featuredContainer.innerHTML = '<div class="empty-message">No featured testimony yet.</div>';
+          testimoniesContainer.innerHTML = '<div class="empty-message">No testimonies available yet.</div>';
+          return;
+        }
+
+        const approved = data.filter(item => {
+          const approvedValue = String(item.approved || item.Approved || "").toLowerCase();
+          return approvedValue === "yes" || approvedValue === "true" || approvedValue === "approved";
+        });
+
+        if (approved.length === 0) {
+          featuredContainer.innerHTML = '<div class="empty-message">No approved featured testimony yet.</div>';
+          testimoniesContainer.innerHTML = '<div class="empty-message">No approved testimonies available yet.</div>';
+          return;
+        }
+
+        const featured = approved.find(item => {
+          const featuredValue = String(item.featured || item.Featured || "").toLowerCase();
+          return featuredValue === "yes" || featuredValue === "true" || featuredValue === "featured";
+        }) || approved[0];
+
+        renderFeaturedTestimony(featuredContainer, featured);
+        renderAllTestimonies(testimoniesContainer, approved);
+        applyLikeButtonStates();
+      } catch (error) {
+        console.error("Error loading testimonies:", error);
+        featuredContainer.innerHTML = '<div class="error-message">Could not load featured testimony.</div>';
+        testimoniesContainer.innerHTML = '<div class="error-message">Could not load testimonies.</div>';
+      }
+    }
+
+    function renderFeaturedTestimony(container, item) {
+      const id = String(item.id || item.ID || item.timestamp || item.Timestamp || Date.now());
+      const name = escapeHtml(item.name || item.Name || "Anonymous");
+      const message = escapeHtml(item.testimony || item.message || item.Message || "");
+      const date = formatDate(item.timestamp || item.Timestamp || item.date || item.Date);
+      const likes = Number(item.likes || item.Likes || 0);
+      const comments = getComments(id);
+
+      container.innerHTML = `
+        <div class="featured-card">
+          <div class="featured-badge">Featured</div>
+
+          <div class="testimony-header">
+            <div class="testimony-name">${name}</div>
+            <div class="testimony-date">${date}</div>
+          </div>
+
+          <p class="testimony-text">${message}</p>
+
+          <div class="card-actions">
+            <button class="like-btn" data-id="${id}" onclick="likeTestimony('${id}', this)">
+              ❤️ <span id="like-count-${id}">${likes + getLocalLikeBonus(id)}</span> Like
+            </button>
+          </div>
+
+          <div class="testimony-tools">
+            <h4>✨ What helped me during this time</h4>
+            <p class="tool-description">
+              Writing things down, staying in prayer, and spending time in the Word helped bring peace and clarity during hard seasons.
+            </p>
+            <div class="tool-links">
+              <a href="#" class="tool-btn">📓 Faith Journal</a>
+              <a href="#" class="tool-btn secondary">📖 Study Bible</a>
+            </div>
+          </div>
+
+          <div class="comments-section">
+            <h4>Comments</h4>
+            <div class="comment-list" id="comment-list-${id}">
+              ${renderComments(comments)}
+            </div>
+
+            <form class="comment-form" onsubmit="submitComment(event, '${id}')">
+              <input type="text" name="name" placeholder="Your name (optional)" />
+              <textarea name="comment" placeholder="Write a comment..." required></textarea>
+              <button type="submit" class="comment-btn">Submit Comment</button>
+              <div class="comment-status" id="comment-status-${id}"></div>
+            </form>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderAllTestimonies(container, testimonies) {
+      container.innerHTML = "";
+
+      testimonies.forEach(item => {
+        const id = String(item.id || item.ID || item.timestamp || item.Timestamp || Math.random());
+        const name = escapeHtml(item.name || item.Name || "Anonymous");
+        const message = escapeHtml(item.testimony || item.message || item.Message || "");
+        const date = formatDate(item.timestamp || item.Timestamp || item.date || item.Date);
+        const likes = Number(item.likes || item.Likes || 0);
+        const comments = getComments(id);
+
+        container.innerHTML += `
+          <div class="testimony-card">
+            <div class="testimony-header">
+              <div class="testimony-name">${name}</div>
+              <div class="testimony-date">${date}</div>
+            </div>
+
+            <p class="testimony-text">${message}</p>
+
+            <div class="card-actions">
+              <button class="like-btn" data-id="${id}" onclick="likeTestimony('${id}', this)">
+                ❤️ <span id="like-count-${id}">${likes + getLocalLikeBonus(id)}</span> Like
+              </button>
+            </div>
+
+            <div class="testimony-tools">
+              <h4>✨ What helped me during this time</h4>
+              <p class="tool-description">
+                Writing things down, staying in prayer, and spending time in the Word helped bring peace and clarity during hard seasons.
+              </p>
+
+              <div class="tool-links">
+                <a href="#" class="tool-btn">📓 Faith Journal</a>
+                <a href="#" class="tool-btn secondary">📖 Study Bible</a>
+              </div>
+            </div>
+
+            <div class="comments-section">
+              <h4>Comments</h4>
+              <div class="comment-list" id="comment-list-${id}">
+                ${renderComments(comments)}
+              </div>
+
+              <form class="comment-form" onsubmit="submitComment(event, '${id}')">
+                <input type="text" name="name" placeholder="Your name (optional)" />
+                <textarea name="comment" placeholder="Write a comment..." required></textarea>
+                <button type="submit" class="comment-btn">Submit Comment</button>
+                <div class="comment-status" id="comment-status-${id}"></div>
+              </form>
+            </div>
+          </div>
+        `;
+      });
+    }
+
+    function renderComments(comments) {
+      if (!comments.length) {
+        return `<div class="empty-message" style="padding:10px 0;">No comments yet.</div>`;
+      }
+
+      return comments
+        .slice()
+        .reverse()
+        .map(comment => `
+          <div class="comment">
+            <div class="comment-name">${escapeHtml(comment.name || "Anonymous")}</div>
+            <div class="comment-text">${escapeHtml(comment.text || "")}</div>
+            <span class="comment-date">${formatDate(comment.date)}</span>
+          </div>
+        `)
+        .join("");
+    }
+
+    function submitComment(event, id) {
+      event.preventDefault();
+
+      const form = event.target;
+      const name = form.name.value.trim() || "Anonymous";
+      const comment = form.comment.value.trim();
+      const status = document.getElementById(`comment-status-${id}`);
+
+      if (!comment) return;
+
+      const comments = getComments(id);
+      comments.push({
+        name,
+        text: comment,
+        date: new Date().toISOString()
+      });
+
+      localStorage.setItem(`comments_${id}`, JSON.stringify(comments));
+
+      const list = document.getElementById(`comment-list-${id}`);
+      list.innerHTML = renderComments(comments);
+
+      form.reset();
+      status.textContent = "Comment added.";
+      setTimeout(() => {
+        status.textContent = "";
+      }, 2000);
+    }
+
+    function getComments(id) {
+      const saved = localStorage.getItem(`comments_${id}`);
+      return saved ? JSON.parse(saved) : [];
+    }
+
+    function hasLiked(id) {
+      return localStorage.getItem(`liked_${id}`) === "true";
+    }
+
+    function getLocalLikeBonus(id) {
+      return hasLiked(id) ? 1 : 0;
+    }
+
+    function likeTestimony(id, button) {
+      if (hasLiked(id)) return;
+
+      localStorage.setItem(`liked_${id}`, "true");
+
+      const countEl = document.getElementById(`like-count-${id}`);
+      countEl.textContent = Number(countEl.textContent) + 1;
+
+      button.classList.add("liked");
+      button.disabled = true;
+    }
+
+    function applyLikeButtonStates() {
+      document.querySelectorAll(".like-btn").forEach(button => {
+        const id = button.dataset.id;
+        if (hasLiked(id)) {
+          button.classList.add("liked");
+          button.disabled = true;
+        }
+      });
+    }
+
+    function formatDate(value) {
+      if (!value) return "Recent";
+      const date = new Date(value);
+      if (isNaN(date.getTime())) return "Recent";
+
+      return date.toLocaleDateString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric"
+      });
+    }
+
+    function escapeHtml(text) {
+      return String(text)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+    loadTestimonies();
+  </script>
+</body>
+</html>
