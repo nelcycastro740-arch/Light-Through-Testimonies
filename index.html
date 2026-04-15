@@ -272,6 +272,142 @@
       .hero-card h2 {
         font-size: 1.55rem;
       }
+      .journey-tools-section {
+  padding: 70px 20px;
+  background: #fcfaf7;
+}
+
+.journey-tools-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.journey-tools-header {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.journey-tools-header h2 {
+  font-size: 2rem;
+  color: #4a403a;
+  margin-bottom: 10px;
+}
+
+.journey-tools-header p {
+  color: #6f625a;
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.journey-tools-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.tool-card {
+  background: #fff;
+  border: 1px solid #f0dfd2;
+  border-radius: 18px;
+  padding: 22px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-4px);
+}
+
+.tool-icon {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+}
+
+.tool-card h3 {
+  font-size: 1.1rem;
+  color: #4a403a;
+  margin-bottom: 10px;
+}
+
+.tool-card p {
+  color: #6a5d55;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.tool-link {
+  display: inline-block;
+  text-decoration: none;
+  background: #d98b5f;
+  color: white;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+
+.tool-link:hover {
+  background: #c97d54;
+}
+
+.bible-note-wrap {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.bible-sticky-note {
+  position: relative;
+  background: #fff1a8;
+  color: #4b433d;
+  width: 320px;
+  padding: 24px 22px;
+  border-radius: 10px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.10);
+  transform: rotate(-2deg);
+  border: 1px solid #eedb7b;
+}
+
+.bible-sticky-note h3 {
+  margin-bottom: 12px;
+  font-size: 1.2rem;
+}
+
+.bible-sticky-note ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+.bible-sticky-note li {
+  margin-bottom: 10px;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.pin {
+  position: absolute;
+  top: 10px;
+  right: 18px;
+  width: 16px;
+  height: 16px;
+  background: #d98b5f;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+@media (max-width: 700px) {
+  .journey-tools-header h2 {
+    font-size: 1.7rem;
+  }
+
+  .bible-sticky-note {
+    width: 100%;
+    max-width: 340px;
+  }
+}
     }
   </style>
 </head>
