@@ -385,7 +385,7 @@
       const testimoniesContainer = document.getElementById("testimonies-list");
 
       try {
-        const response = await fetch(WEB_APP_URL);
+        const response = await fetch(WEB_APP_URL + "?action=getTestimonies");
         const data = await response.json();
 
         if (!Array.isArray(data) || data.length === 0) {
