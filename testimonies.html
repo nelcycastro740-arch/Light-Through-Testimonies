@@ -76,7 +76,7 @@
       background: #fff;
       border: 1px solid #f0e4d8;
       border-radius: 18px;
-      padding: 24px;
+      padding: 20px;
       margin-bottom: 24px;
       box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
     }
@@ -154,8 +154,8 @@
     }
 
     .comments-section {
-      margin-top: 16px;
-      padding-top: 16px;
+      margin-top: 14px;
+      padding-top: 14px;
       border-top: 1px solid #f1e6dd;
     }
 
@@ -205,6 +205,7 @@
       margin-bottom: 10px;
       font-size: 0.95rem;
       background: #fff;
+      min-height: 70px;
     }
 
     .comment-form textarea {
@@ -233,8 +234,8 @@
     }
 
     .testimony-tools {
-      margin-top: 18px;
-      padding: 16px;
+      margin-top: 14px;
+      padding: 14px;
       background: #fff7f2;
       border: 1px solid #f1d8c7;
       border-radius: 14px;
@@ -612,9 +613,9 @@
     }
 
     function formatDate(value) {
-      if (!value) return "Recent";
+      if (!value) return "";
       const date = new Date(value);
-      if (isNaN(date.getTime())) return "Recent";
+      if (isNaN(date.getTime())) return "";
 
       return date.toLocaleDateString(undefined, {
         year: "numeric",
