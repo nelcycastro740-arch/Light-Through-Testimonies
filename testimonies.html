@@ -394,7 +394,32 @@ footer {
           <h3>${escapeHTML(item.title)}</h3>
           <div class="meta">Shared by ${escapeHTML(item.name || "Anonymous")}</div>
           <div class="story">${escapeHTML(item.story)}</div>
+container.innerHTML += `
+  <div class="testimony-card">
 
+    <!-- Your testimony content -->
+    <p class="testimony-text">${item.message}</p>
+
+    <!-- 👇 ADD THIS RIGHT HERE -->
+    <div class="testimony-tools">
+      <h4>✨ What helped me during this time</h4>
+      <p class="tool-description">
+        Writing things down helped me stay consistent and reflect on what I was going through.
+      </p>
+
+      <div class="tool-links">
+        <a href="https://your-affiliate-link.com" target="_blank" class="tool-btn">
+          📓 Faith Journal
+        </a>
+
+        <a href="https://your-affiliate-link.com" target="_blank" class="tool-btn secondary">
+          📖 Study Bible
+        </a>
+      </div>
+    </div>
+
+  </div>
+`;
           <div class="actions">
             <button
               class="like-btn"
