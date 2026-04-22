@@ -438,7 +438,9 @@
             <div class="testimony-date">${date}</div>
           </div>
 
-          <p class="testimony-text">${message}</p>
+          <div class="testimony-text">
+  ${escapeHTML(story).replace(/\n/g, "<br><br>")}
+</div>
 
           <div class="card-actions">
             <button class="like-btn" data-id="${id}" onclick="likeTestimony('${id}', this)">
