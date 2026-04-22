@@ -1,1 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Submit Your Testimony | Light Through Testimonies</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #fff8f3;
+      color: #4a3a33;
+    }
+
+    header {
+      text-align: center;
+      padding: 30px 16px 20px;
+      background: #f7e3d7;
+      border-bottom: 1px solid #ead3c5;
+    }
+
+    header h1 {
+      margin: 0;
+    }
+
+    nav {
+      text-align: center;
+      padding: 14px;
+      background: #fff3eb;
+      border-bottom: 1px solid #f0ddd1;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #8a5a44;
+      font-weight: bold;
+      margin: 0 12px;
+    }
+
+    .container {
+      width: min(92%, 700px);
+      margin: 30px auto;
+    }
+
+    .submit-box {
+      background: white;
+      border-radius: 16px;
+      padding: 20px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+    }
+
+    .submit-box h2 {
+      margin-top: 0;
+    }
+
+    .submit-box p {
+      color: #6f5a4f;
+      line-height: 1.7;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px 14px;
+      border: 1px solid #e5d1c5;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: inherit;
+    }
+
+    textarea {
+      min-height: 180px;
+      resize: vertical;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    button {
+      background: #d9895b;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 22px;
+      font-size: 1rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+    }
+
+    #status {
+      margin-top: 12px;
+      color: #7a5b4c;
+      line-height: 1.5;
+    }
+
+    footer {
+      text-align: center;
+      padding: 24px 16px 40px;
+      color: #7b6a61;
+    }
+
+    @media (max-width: 700px) {
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Submit Your Testimony</h1>
+  </header>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="testimonies.html">Testimonies</a>
+    <a href="submit.html">Submit</a>
+    <a href="about.html">About</a>
+  </nav>
+
+  <main class="container">
+    <section class="submit-box">
+      <h2>Share Your Story</h2>
+      <p>
+        Your story could be the encouragement someone else needs. Testimonies are reviewed before they appear on the site.
+      </p>
+
+      <form id="testimonyForm">
+        <div class="form-row">
+          <input type="text" id="name" placeholder="Your name (optional)" />
+          <input type="text" id="title" placeholder="Title of your testimony" required />
+        </div>
+
+        <textarea id="story" placeholder="Share your story..." required></textarea>
+
+        <button type="submit" id="submitBtn">Submit</button>
+        <div id="status"></div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Light Through Testimonies
+  </footer>
+
+  <script>
+    const scriptURL = "https://script.google.com/macros/s/AKfycbzhgY33cuzLBvzCEWQU9vEd1r8vU0VHa_7w5rlZFpbS17fHKRQ8w9SG2po--RKrp3Y7/exec";
+
+    const form = document.getElementById("testimonyForm");
+    const status = document.getElementById("status");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value.trim() || "Anonymous";
+      const title = document.getElementById("title").value.trim();
+      const story = document.getElementById("story").value.trim();
+
+      if (!title || !story) {
+        status.textContent = "Please fill in the title and story.";
+        return;
+      }
+
+      status.textContent = "Submitting...";
+      submitBtn.disabled = true;
+
+      try {
+        const response = await fetch(scriptURL, {
+          method: "POST",
+          body: JSON.stringify({
+            action: "submitTestimony",
+            name,
+            title,
+            story
+          })
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          status.textContent = "Submitted successfully! Your testimony will appear after approval.";
+          form.reset();
+        } else {
+          status.textContent = "Submission failed. Please check the Apps Script setup.";
+          console.error("Apps Script error:", result);
+        }
+      } catch (error) {
+        console.error("Submit error:", error);
+        status.textContent = "Submit failed. Please check your Apps Script deployment and permissions.";
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
