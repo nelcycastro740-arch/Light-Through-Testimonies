@@ -427,7 +427,7 @@
         }) || approved[0];
 
         renderFeaturedTestimony(featuredContainer, featured);
-        await renderAllTestimonies(testimoniesContainer, approved);
+        renderAllTestimonies(testimoniesContainer, approved);
         applyLikeButtonStates();
       } catch (error) {
         console.error("Error loading testimonies:", error);
