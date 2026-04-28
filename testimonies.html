@@ -436,7 +436,7 @@
       }
     }
 
-    function renderFeaturedTestimony(container, item) {
+    async function renderFeaturedTestimony(container, item) {
       const id = String(item.id || item.ID || item.timestamp || item.Timestamp || Date.now());
       const name = escapeHtml(item.name || item.Name || "Anonymous");
       const message = escapeHtml(item.story || item.testimony || item.message || item.Message || "");
