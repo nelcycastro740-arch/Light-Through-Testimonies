@@ -437,8 +437,7 @@
     }
 
     function renderFeaturedTestimony(container, item) {
-      const id = String(item.id || item.ID || item.timestamp || item.Timestamp || iteam.title || iteam.name || Date.now ());
-      .replace(/[^a-zA-Z0-9_-]/g, "-");
+      const id = String(item.id);
       const name = escapeHtml(item.name || item.Name || "Anonymous");
       const message = escapeHtml(item.story || item.testimony || item.message || item.Message || "");
       const date = formatDate(item.timestamp || item.Timestamp || item.date || item.Date);
