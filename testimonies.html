@@ -426,7 +426,7 @@
           return featuredValue === "yes" || featuredValue === "true" || featuredValue === "featured";
         }) || approved[0];
 
-        renderFeaturedTestimony(featuredContainer, featured);
+        await renderFeaturedTestimony(featuredContainer, featured);
         renderAllTestimonies(testimoniesContainer, approved);
         applyLikeButtonStates();
       } catch (error) {
