@@ -427,7 +427,7 @@
         }) || approved[0];
 
         await renderFeaturedTestimony(featuredContainer, featured);
-        renderAllTestimonies(testimoniesContainer, approved);
+        await renderAllTestimonies(testimoniesContainer, approved);
         applyLikeButtonStates();
       } catch (error) {
         console.error("Error loading testimonies:", error);
@@ -491,7 +491,7 @@
       `;
     }
 
-    function renderAllTestimonies(container, testimonies) {
+    async function renderAllTestimonies(container, testimonies) {
       container.innerHTML = "";
 
       testimonies.forEach(item => {
