@@ -444,7 +444,7 @@
       const likes = Number(item.likes || item.Likes || 0);
       const comments = [];
 
-      container.innerHTML ='
+      container.innerHTML =`
         <div class="featured-card">
           <div class="featured-badge">Featured</div>
 
@@ -452,7 +452,7 @@
             <div class="testimony-name">${name}</div>
             <div class="testimony-date">${date}</div>
           </div>
-        ';
+        `;
           <div class="testimony-text">
             ${message.replace(/\n/g, "<br><br>")}
           </div>
