@@ -500,7 +500,7 @@
         const message = escapeHtml(item.story || item.testimony || item.message || item.Message || "");
         const date = formatDate(item.timestamp || item.Timestamp || item.date || item.Date);
         const likes = Number(item.likes || item.Likes || 0);
-        const comments = getComments(id);
+        const comments = [];
 
         container.innerHTML += `
           <div class="testimony-card">
@@ -594,11 +594,6 @@
       setTimeout(() => {
         status.textContent = "";
       }, 2000);
-    }
-
-    function getComments(id) {
-      const saved = localStorage.getItem(`comments_${id}`);
-      return saved ? JSON.parse(saved) : [];
     }
 
     function hasLiked(id) {
