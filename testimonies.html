@@ -385,6 +385,17 @@
   <script>
     const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzhgY33cuzLBvzCEWQU9vEd1r8vU0VHa_7w5rlZFpbS17fHKRQ8w9SG2po--RKrp3Y7/exec";
 
+    async function getComments(testimonyId) {
+  try {
+    const res = await fetch(WEB_APP_URL + "?action=getComments");
+    const data = await res.json();
+
+    return data.filter(c => String(c.testimonyId) === String(testimonyId));
+  } catch (err) {
+    console.error("Error loading comments:", err);
+    return [];
+  }
+}
     async function loadTestimonies() {
       const featuredContainer = document.getElementById("featured-testimony");
       const testimoniesContainer = document.getElementById("testimonies-list");
