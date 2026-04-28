@@ -500,7 +500,7 @@
         const message = escapeHtml(item.story || item.testimony || item.message || item.Message || "");
         const date = formatDate(item.timestamp || item.Timestamp || item.date || item.Date);
         const likes = Number(item.likes || item.Likes || 0);
-        const comments = getComments(id);
+        const comments = await getComments(id);
 
         container.innerHTML += `
           <div class="testimony-card">
