@@ -550,22 +550,22 @@
     }
 
     function renderComments(comments) {
-      if (!comments.length) {
-        return `<div class="empty-message" style="padding:10px 0;">No comments yet.</div>`;
-      }
+  if (!comments || comments.length === 0) {
+    return `<div class="empty-message" style="padding:10px 0;">No comments yet.</div>`;
+  }
 
-      return comments
-        .slice()
-        .reverse()
-        .map(comment => `
-          <div class="comment">
-            <div class="comment-name">${escapeHtml(comment.name || "Anonymous")}</div>
-            <div class="comment-text">${escapeHtml(comment.text || "")}</div>
-            <span class="comment-date">${formatDate(comment.date)}</span>
-          </div>
-        `)
-        .join("");
-    }
+  return comments
+    .slice()
+    .reverse()
+    .map(c => `
+      <div class="comment">
+        <div class="comment-name"><strong>${c.name || "Anonymous"}</strong></div>
+        <div class="comment-text">${c.comment || ""}</div>
+        <div class="comment-date">${c.date || ""}</div>
+      </div>
+    `)
+    .join("");
+}
 
     function submitComment(event, id) {
       event.preventDefault();
