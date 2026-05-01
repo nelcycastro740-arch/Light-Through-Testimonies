@@ -437,9 +437,9 @@
     }
 
     function renderFeaturedTestimony(container, item) {
-      const id = String(item.id || item.id || item.timestamp || item.Timestamp || Math.random());
+      const id = String(item.id || item.ID || item.timestamp || item.Timestamp || Math.random());
       const name = escapeHtml(item.name || item.Name || "Anonymous");
-      const message = escapeHtml(item.story || item.testimony || item.message || item.Message || "");
+      const message = escapeHtml(item.story || item.Testimony || item.message || item.Message || "");
       const date = formatDate(item.timestamp || item.Timestamp || item.date || item.Date);
       const likes = Number(item.likes || item.Likes || 0);
       const comments = [];
@@ -497,7 +497,7 @@
       testimonies.forEach(item => {
         const id = String(item.id || item.ID || item.timestamp || item.Timestamp || Math.random());
         const name = escapeHtml(item.name || item.Name || "Anonymous");
-        const message = escapeHtml(item.story || item.testimony || item.message || item.Message || "");
+        const message = escapeHtml(item.story || item.Testimony || item.message || item.Message || "");
         const date = formatDate(item.timestamp || item.Timestamp || item.date || item.Date);
         const likes = Number(item.likes || item.Likes || 0);
         const comments = [];
@@ -560,7 +560,7 @@
     .map(c => `
       <div class="comment">
         <div class="comment-name"><strong>${c.name || "Anonymous"}</strong></div>
-        <div class="comment-text">${c.comment || ""}</div>
+        <div class="comment-text">${c.comment || c.text || ""}</div>
         <div class="comment-date">${c.date || ""}</div>
       </div>
     `)
